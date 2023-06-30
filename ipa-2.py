@@ -169,7 +169,7 @@ def vigenere_cipher(message, key):
                 index+=1
                 if len(message)>=len(key):
                     index=index%len(key)
-        return str(shifted_message)
+        return shifted_message
     except:
         return "The message should be a string of uppercase English letters and spaces. Additionally, the key should be a string of uppercase English letters without spaces, not longer than the message"
 
