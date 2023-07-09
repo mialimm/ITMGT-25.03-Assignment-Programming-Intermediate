@@ -37,7 +37,8 @@ def shift_letter(letter, shift):
         elif alphabet.index(letter)+shift<=25:
             return alphabet[alphabet.index(letter)+shift]
         else:
-            return alphabet[(alphabet.index(letter)+shift)-26]
+            shift = shift%26
+            return alphabet[((alphabet.index(letter)+shift)%26)]
     except:
         return "A single uppercase letter or a space must be inputted for the letter. Additionally, shift must be an integer."
     
@@ -72,7 +73,8 @@ def caesar_cipher(message, shift):
             elif (alphabet.index(letter)+shift)<=25:
                 shifted_letter+=alphabet[alphabet.index(letter)+shift]
             else:
-                shifted_letter+=alphabet[(alphabet.index(letter)+shift)-26]
+                shift = shift%26
+                shifted_letter+=alphabet[alphabet.index(letter)+shift]
         return "".join(shifted_letter)
     except:
         return "The message should consist of uppercase English letters and spaces. Additionally, shift must be an integer"
@@ -163,7 +165,8 @@ def vigenere_cipher(message, key):
             else:
                 new_num=(ord(letter)-ord("A")+1)
                 new_num+=(ord(key[index])-ord("A"))
-                new_num=new_num%26
+                if new_num>26:
+                    new_num=new_num%26
                 shifted_letter=chr(new_num+ord("A")-1)
                 shifted_message+=shifted_letter
                 index+=1
