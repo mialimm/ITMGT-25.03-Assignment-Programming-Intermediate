@@ -69,12 +69,11 @@ def caesar_cipher(message, shift):
         shifted_letter = ""
         for letter in message:
             if letter == " ":
-                shifted_letter+=" "
+                shifted_letter.append(" ")
             elif (alphabet.index(letter)+shift)<=25:
-                shifted_letter+=alphabet[alphabet.index(letter)+shift]
+                shifted_letter.append(alphabet[alphabet.index(letter)+shift])
             else:
-                shift = shift%26
-                shifted_letter+=alphabet[alphabet.index(letter)+shift]
+                shifted_letter.append(alphabet[((alphabet.index(letter))+shift)%26])
         return "".join(shifted_letter)
     except:
         return "The message should consist of uppercase English letters and spaces. Additionally, shift must be an integer"
